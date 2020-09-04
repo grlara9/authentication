@@ -8,9 +8,7 @@ function App() {
   return (
     <Router>
       <Switch>
-        <Route path="/" exact>
-          <Users />
-        </Route>
+        <Route path="/" exact><Users /></Route>
         
         <Redirect to="/" />
       </Switch>

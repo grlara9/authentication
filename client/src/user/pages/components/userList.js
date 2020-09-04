@@ -1,6 +1,6 @@
 import React from 'react';
 
-import userItem from './userItem';
+import UserItem from './userItem';
 //import './UsersList.css';
 
 const userList = props => {
@@ -15,7 +15,7 @@ const userList = props => {
   return (
     <ul className="users-list">
       {props.items.map(user => (
-        <userItem
+        <UserItem
           key={user.id}
           id={user.id}
           image={user.image}
