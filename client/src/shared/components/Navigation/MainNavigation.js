@@ -7,6 +7,12 @@ import './MainNavigation.css';
 
 const MainNavigation = props => {
     return (
+        <React.Fragment>
+        <SideDrawer>
+            <nav className="main-navigation__drawer-nav">
+            <NavLinks />
+            </nav>
+        </SideDrawer>
         <MainHeader>
             <button className="main-navigation__menu-btn">
                 <span />
@@ -20,6 +26,7 @@ const MainNavigation = props => {
             <NavLinks />
             </nav>
         </MainHeader>
+        </React.Fragment>
     )
 }
 export default MainNavigation;
