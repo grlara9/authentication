@@ -12,7 +12,6 @@ function App() {
       <main>
       <Switch>
         <Route path="/" exact><Users /></Route>
-        
         <Redirect to="/" />
       </Switch>
       </main>
