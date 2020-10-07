@@ -30,7 +30,7 @@ const MainNavigation = props => {
           <span />
           <span />
           <span />
-        </button>
+        </button> 
         <h1 className="main-navigation__title">
           <Link to="/">YourPlaces</Link>
         </h1>
