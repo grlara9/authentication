@@ -1,7 +1,7 @@
 import React from 'react'
 
 import Input from '../../shared/components/FormElements/Input'
-import { VALIDATOR_REQUIRE } from '../../shared/util/validators';
+import { VALIDATOR_REQUIRE } from '../../shared/components/Utils/validators';
 
 const newplace =()=>{ 
     return (
