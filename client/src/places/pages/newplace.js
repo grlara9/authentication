@@ -3,8 +3,26 @@ import React from 'react'
 import Input from '../../shared/components/FormElements/Input'
 import { VALIDATOR_REQUIRE } from '../../shared/components/Utils/validators';
 
-const newplace =()=>{ 
 
+const formReducer = (state, action) => {
+
+}
+
+
+const newplace =()=>{ 
+  const [formState, dispatch] = useReducer(formReducer, {
+    inputs: {
+      title: {
+        value: '',
+        isValid: false
+      },
+      description: {
+        value: '',
+        isValid: false
+      }
+    },
+    isValid: false
+  });
 
     return (
         <form className="place-form">
