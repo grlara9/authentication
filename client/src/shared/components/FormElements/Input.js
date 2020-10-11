@@ -29,6 +29,13 @@ const Input = props => {
     isValid: false
   });
 
+  const { id, onInput } = props;
+  const { value, isValid } = inputState;
+
+  useEffect(() => {
+    onInput(id, value, isValid)
+  }, [id, value, isValid, onInput]);
+
   const changeHandler = event => {
     dispatch({ type: 'CHANGE', val: event.target.value, validators: props.validators});
   };
