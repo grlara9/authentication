@@ -45,6 +45,15 @@ const newplace =()=>{
     isValid: false
   });
 
+  const inputHandler = useCallback((id, value, isValid) => {
+    dispatch({
+      type: 'INPUT_CHANGE',
+      value: value,
+      isValid: isValid,
+      inputId: id
+    });
+  }, []);
+
     return (
         <form className="place-form">
           <Input element="input" 
