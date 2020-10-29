@@ -56,11 +56,15 @@ const newplace =()=>{
 
     return (
         <form className="place-form">
-          <Input element="input" 
-          type="text" 
-          label="Title" 
-          validators={[VALIDATOR_REQUIRE()]}
-          errorText="Please enter a valid title." />
+          <Input 
+           id="title"
+           element="input"
+           type="text"
+           label="Title"
+           validators={[VALIDATOR_REQUIRE()]}
+           errorText="Please enter a valid title."
+           onInput={inputHandler}
+          />
 
           <Input
             id="description"
