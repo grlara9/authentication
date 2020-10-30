@@ -30,7 +30,7 @@ const formReducer = (state, action) => {
 };
 
 
-const newplace =()=>{ 
+const NewPlace = () => { 
   const [formState, dispatch] = useReducer(formReducer, {
     inputs: {
       title: {
@@ -79,10 +79,10 @@ const newplace =()=>{
             errorText="Please enter a valid description (at least 5 characters)."
             onInput={inputHandler}
           />
-          <Button type="submit" disabled={!formState.isValid}>
+          <button type="submit" disabled={!formState.isValid}>
         ADD PLACE
-      </Button>
+      </button>
           </form> 
       );
 } 
-export default newplace 
+export default NewPlace 
