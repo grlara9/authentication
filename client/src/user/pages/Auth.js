@@ -2,10 +2,7 @@ import React from 'react'
 import Card from '../../shared/components/UIElements/Card';
 import Input from '../../shared/components/FormElements/Input';
 import Button from '../../shared/components/FormElements/Button'
-import {
-    VALIDATOR_EMAIL,
-    VALIDATOR_MINLENGTH
-  } from '../../shared/components/Utils/validators';
+import { VALIDATOR_EMAIL, VALIDATOR_MINLENGTH } from '../../shared/components/Utils/validators';
   import { useForm } from '../../shared/components/hooks/form-hook';
 import './Auth.css';
 
@@ -31,7 +28,7 @@ const Auth =() =>{
     }
 
     return (
-        <div>
+        <Card className="authentication">
         <h2>Login Required</h2>
         <hr />
         <form onSubmit={authSubmitHandler}>
@@ -57,7 +54,7 @@ const Auth =() =>{
             LOGIN
           </Button>
         </form>
-        </div>
+        </Card>
     )
 }
 export default Auth
