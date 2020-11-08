@@ -2,7 +2,7 @@ import React, { useCallback, useReducer } from 'react'
 
 import Input from '../../shared/components/FormElements/Input'
 import { VALIDATOR_REQUIRE, VALIDATOR_MINLENGTH } from '../../shared/components/Utils/validators';
-import { useForm } from '../../shared/hooks/form-hook';
+import { useForm } from '../../shared/components/hooks/form-hook'
 
 const NewPlace = () => {
   const [formState, inputHandler] = useForm(
