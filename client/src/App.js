@@ -7,7 +7,7 @@ import NewPlace from './places/pages/newplace';
 import UserPlaces from './places/pages/UserPlace';
 import MainNavigation from './shared/components/Navigation/MainNavigation';
 import Auth from './user/pages/Auth'
-import { AuthContext } from './shared/context/auth-context';
+import { AuthContext } from './shared/components/context/auth-context';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -34,9 +34,7 @@ function App() {
         <Route path="/places/new" exact>
           <NewPlace />
         </Route>
-        <Route path="/places/:placeId">
-          <UpdatePlace />
-        </Route>
+       
         <Redirect to="/" />
       </Switch>
     );
