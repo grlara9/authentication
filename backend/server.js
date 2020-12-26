@@ -1,12 +1,13 @@
 const express = require('express');
+const bodyParser = require('body-parser');
+
+const app = express();
+const placesRoutes = require('./routes/places-routes');
+
 const PORT = 3000;
 
 
-const app = express();
-
-app.get('/', (req, res) => {
-    res.send('Hello World!')
-  })
+app.use('/api/places', placesRoutes); 
 
 app.listen(PORT, ()=>{
     console.log("Listeningon port " + PORT)
