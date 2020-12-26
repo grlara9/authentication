@@ -40,5 +40,9 @@ let DUMMY_PLACES = [
     res.json({ place });
   };
 
+  const createPlace = (req, res, next) => {
+      
+  }
+
   exports.getPlaceById = getPlaceById;
   exports.getPlaceByUserId = getPlaceByUserId;
