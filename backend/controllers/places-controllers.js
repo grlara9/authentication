@@ -19,9 +19,26 @@ let DUMMY_PLACES = [
           return p.id === placeId
       })
       if(!places){
-          return res.status(404).json({message: 'could not find place for provided user'});
+          return res.status(404).json({message: 'could not find place'});
       }
       res.json({places})
   }
 
+  const getPlaceByUserId = (req, res, next) => {
+    const userId = req.params.uid;
+  
+    const place = DUMMY_PLACES.find(p => {
+      return p.creator === userId;
+    });
+  
+    if (!place) {
+      
+      return res.status(404).json({message: 'could not find place for provided user'});
+      
+    }
+  
+    res.json({ place });
+  };
+
   exports.getPlaceById = getPlaceById;
+  exports.getPlaceByUserId = getPlaceByUserId;
