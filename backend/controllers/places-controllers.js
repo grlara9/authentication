@@ -62,7 +62,12 @@ let DUMMY_PLACES = [
     res.status(200).json({ message: 'Deleted place.' });
   };
 
+const updatePlace = (req, res, next) =>{
+  const {title, description} = req.body
+}
+
   exports.getPlaceById = getPlaceById;
   exports.getPlaceByUserId = getPlaceByUserId;
   exports.createPlace = createPlace;
   exports.deletePlace =deletePlace
+  exports.updatePlace=updatePlace
