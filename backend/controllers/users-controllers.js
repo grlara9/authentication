@@ -34,5 +34,10 @@ const DUMMY_USERS = [
     res.status(201).json({user: createdUser});
   }
 
+  const login = (req, res, next) => {
+
+  }
+
   exports.getUsers = getUsers;
   exports.signup = signup;
+  exports.login = login;
