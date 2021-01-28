@@ -1,3 +1,8 @@
+const uuid = require('uuid/v4')
+const { validationResults} = require('express-validator')
+
+const Place = require('../models/place');
+
 let DUMMY_PLACES = [
     {
       id: 'p1',
@@ -12,16 +17,21 @@ let DUMMY_PLACES = [
     }
   ];
 
-  const getPlaceById = (req, res, next)=>{
+  const getPlaceById = async (req, res, next)=>{
       const placeId = req.params.pid;
 
-      const places = DUMMY_PLACES.find(p => {
-          return p.id === placeId
-      })
-      if(!places){
-          return res.status(404).json({message: 'could not find place'});
-      }
-      res.json({places})
+      let place;
+      try{
+        place = Place.findById(placeId)
+      } catch(err){
+        return res.status(404).json({message: 'Something went wrong, could not find a place.'});
+    }
+     
+    if (!place) {
+      return res.status(404).json({message: 'Could not find a place for the provided id..'});
+    };
+    res.json({ place: place.toObject({ getters: true }) }); // => { place } => { place: place }
+
   }
 
   const getPlaceByUserId = (req, res, next) => {

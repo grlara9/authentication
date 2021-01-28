@@ -15,4 +15,4 @@ const placeSchema = new Schema({
     creator: { type: String, required: true }
 });
 
-module.exports = mongoose.model('Place', placeSchema);
+module.exports = mongoose.model('Place', placeSchema); 
