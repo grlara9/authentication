@@ -1,5 +1,5 @@
-const uuid = require('uuid/v4')
-const { validationResults} = require('express-validator')
+const uuid = require('uuid/v4');
+
 
 const Place = require('../models/place');
 
@@ -74,9 +74,30 @@ let DUMMY_PLACES = [
   }
 
   const deletePlace = (req, res, next) => {
-    const placeId = req.params.pid;.
-    DUMMY_PLACES = DUMMY_PLACES.filter(p => p.id !== placeId);
-    res.status(200).json({ message: 'Deleted place.' });
+    const placeId = req.params.pid;
+
+  let place;
+  try {
+    place = await Place.findById(placeId);
+  } catch (err) {
+    const error = new HttpError(
+      'Something went wrong, could not delete place.',
+      500
+    );
+    return next(error);
+  }
+
+  try {
+    await place.remove();
+  } catch (err) {
+    const error = new HttpError(
+      'Something went wrong, could not delete place.',
+      500
+    );
+    return next(error);
+  }
+
+  res.status(200).json({ message: 'Deleted place.' }); 
   };
 
 const updatePlace = (req, res, next) =>{
