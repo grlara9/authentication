@@ -1,4 +1,4 @@
-const uuid = require('uuid/v4');
+
 
 
 const Place = require('../models/place');
@@ -57,23 +57,49 @@ let DUMMY_PLACES = [
         res.json({ places: places.map(place => place.toObject({ getters: true })) });
       };
 
-  const createPlace = (req, res, next) => {
-      const {title, description, coordinates, address, creator}= req.body;
+  const createPlace = async (req, res, next) => {
+  
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return next(
+        
+        res.status(404).json({message: 'Invalid inputs passed, please check your data.'})
+      );
+    }
+  
+    const { title, description, address, creator } = req.body;
+  
+    let coordinates;
+    try {
+      coordinates = await getCoordsForAddress(address);
+    } catch (error) {
+      return next(error);
+    }
+  
+    // const title = req.body.title;
+    const createdPlace = new Place({
+      title,
+      description,
+      address,
+      location: coordinates,
+      image:
+        'https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Empire_State_Building_%28aerial_view%29.jpg/400px-Empire_State_Building_%28aerial_view%29.jpg',
+      creator
+    });
+  
+    try {
+      await createdPlace.save();
+    } catch (err) {
+      const error = res.status(404).json({message: 'Creating place failed, please try again.'})
+        return next(error);
+    }
+  
+    res.status(201).json({ place: createdPlace });
+  };
+  
+  
 
-      const createdPlace = {
-        id: uuid(),
-        title,
-        description, 
-        location: coordinates,
-        address, 
-        creator
-      };
-      DUMMY_PLACES.push(createdPlace);
-
-      res.status(201).json({place: createdPlace})
-  }
-
-  const deletePlace = (req, res, next) => {
+  const deletePlace = async (req, res, next) => {
     const placeId = req.params.pid;
 
   let place;

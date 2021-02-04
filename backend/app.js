@@ -16,7 +16,7 @@ app.use('/api/users', usersRoutes);
 
 
 mongoose
-  .connect('mongodb+srv://manu:academind123@cluster0-ntrwp.mongodb.net/places?retryWrites=true&w=majority')
+  .connect('mongodb+srv://dbmemo:Gg30358240!@cluster0.1akrf.gcp.mongodb.net/places?retryWrites=true&w=majority')
   .then(() => {
     app.listen(PORT, ()=>{
         console.log("Listeningon port " + PORT)
