@@ -57,7 +57,7 @@ let DUMMY_PLACES = [
         res.json({ places: places.map(place => place.toObject({ getters: true })) });
       };
 
-  const createPlace = async (req, res, next) => {
+  const createPlace = async(req, res, next) => {
   
     const errors = validationResult(req);
     if (!errors.isEmpty()) {

@@ -7,7 +7,7 @@ const usersRoutes = require('./routes/users-routes');
 
 const app = express();
 const PORT = 3000;
-
+app.use(bodyParser.json());
 
 app.use('/api/places', placesRoutes); 
 
